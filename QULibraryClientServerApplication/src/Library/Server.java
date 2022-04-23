@@ -14,7 +14,6 @@ public class Server {
 				Socket client = server.accept();
 				Services clientThread = new Services(client);
 				
-				
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

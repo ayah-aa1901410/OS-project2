@@ -30,39 +30,27 @@ public class Services extends Thread {
 		this.start();
 	}
 
-	
 	public void run() {
 		boolean isUser = false;
 		boolean cont = false;
 		try {
-			
 			fromClient = new Scanner(client.getInputStream());
 			toClient = new PrintWriter(client.getOutputStream(), true);
-			username = fromClient.nextLine();
-			
 			String message = "";
 			
-			while(!cont) {
-				for(int i = 0; i<users.length; i++) {
-					if(username.equalsIgnoreCase(users[i].getUsername())) {
-						isUser = true;
-						currentUser = users[i];
-						message += "Enter Password: ";
-					}
-				}
-				
-				if(!isUser) {
-					message += "Not a valid user.";
-				}
-				
-				toClient.println(message);
-				
-				if(message.equals("Enter Password: ")) {
+			username = fromClient.nextLine();
+			for(int i = 0; i<users.length; i++) {
+				if(username.equalsIgnoreCase(users[i].getUsername())) {
+					isUser = true;
+					currentUser = users[i];
+					message = "Enter Password: ";
+					toClient.println(message);
 					String password = fromClient.nextLine();
 					if(password.equals(currentUser.getPassword())) {
 						message = "Valid Login\r\n";
 						toClient.println(message);
 						cont = true;
+						break;
 					}else {
 						message = "Invalid Login\r\n";
 						toClient.println(message);
@@ -70,10 +58,15 @@ public class Services extends Thread {
 				}
 			}
 			
+			if(!isUser) {
+				message = "Not a valid user.";
+				toClient.println(message);
+			}
 			
-			
-			
-			
+//			if(cont) {
+//				
+//			}
+				
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
