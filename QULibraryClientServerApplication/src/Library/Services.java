@@ -63,9 +63,38 @@ public class Services extends Thread {
 				toClient.println(message);
 			}
 			
-//			if(cont) {
-//				
-//			}
+			if(cont) {
+				while(cont) {
+					toClient.println("Choose One of the following Services: ");
+					toClient.println("1: Borrow a Book");
+					toClient.println("2: Rate a Book");
+					toClient.println("3: Upload a Book");
+					toClient.println("4: Download a Book");
+					toClient.println("5: Exit");
+					
+					int response = fromClient.nextInt();
+					
+					switch(response) {
+					case 1:
+						toClient.println("you are borrowing a book");
+						break;
+					case 2:
+						toClient.println("you are rating a book");
+						break;
+					case 3:
+						toClient.println("you are uploading a book");
+						break;
+					case 4:
+						toClient.println("you are downloading book");
+						break;
+					case 5:
+						toClient.println("Thank you for visiting!");
+						cont = false;
+						break;
+					}
+					
+				}
+			}
 				
 		}catch (IOException e) {
 			e.printStackTrace();

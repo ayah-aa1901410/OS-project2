@@ -31,7 +31,48 @@ public class Client {
 			}
 
 			if(success) {
-				
+				while(success) {
+					String message1 = fromServer.nextLine();
+					System.out.println(message1);
+					String service1 = fromServer.nextLine();
+					System.out.println(service1);
+					String service2 = fromServer.nextLine();
+					System.out.println(service2);
+					String service3 = fromServer.nextLine();
+					System.out.println(service3);
+					String service4 = fromServer.nextLine();
+					System.out.println(service4);
+					String service5 = fromServer.nextLine();
+					System.out.println(service5);
+
+					int response = fromUser.nextInt();
+					toServer.println(response);
+					
+					switch(response) {
+					case 1:
+						String response1 = fromServer.nextLine();
+						System.out.println(response1);
+						break;
+					case 2:
+						String response2 = fromServer.nextLine();
+						System.out.println(response2);
+						break;
+					case 3:
+						String response3 = fromServer.nextLine();
+						System.out.println(response3);
+						break;
+					case 4:
+						String response4 = fromServer.nextLine();
+						System.out.println(response4);
+						break;
+					case 5:
+						String response5 = fromServer.nextLine();
+						System.out.println(response5);
+						success = false;
+						break;
+					}
+					
+				}
 			}
 			
 		} catch (IOException e) {
