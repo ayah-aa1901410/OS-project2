@@ -3,7 +3,7 @@
 		"ISBN": 1122334455661,
 		"reviews": [
 		],
-		"available": true,
+		"available": false,
 		"description": "This is the first book in the dataset",
 		"title": "Book1"
 	},

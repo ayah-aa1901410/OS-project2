@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+import org.json.simple.JSONObject;
+
 public class Services extends Thread {
 	private Socket client;
 	private Scanner fromClient;
@@ -86,7 +88,7 @@ public class Services extends Thread {
 					
 					switch(response) {
 					case 1:
-						Book requiredBook = null;
+						JSONObject requiredBook = null;
 						boolean bookAvailable = false; 
 						String checkingBookMessage = "";
 						
@@ -101,7 +103,7 @@ public class Services extends Thread {
 						}
 						toClient.println(requiredBook);
 						if(requiredBook != null) {
-							if(requiredBook.isAvailable() == true) {
+							if((boolean)requiredBook.get("available") == true) {
 								message = "Book is Available. You have now Borrowed the Book";
 								try {
 									bookStock.setAvailability(requiredBook, false);

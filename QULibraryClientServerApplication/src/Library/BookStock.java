@@ -1,8 +1,10 @@
 package Library;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -15,7 +17,7 @@ public class BookStock {
 		return (List<JSONObject>) jsonParser.parse(reader);
 	}
 
-	public static Book getBook(Long isbn) throws Exception {
+	public static JSONObject getBook(Long isbn) throws Exception {
 		List<JSONObject> books = getBooksFromStock();
 		JSONObject required = null;
 		Book reqBook = null;
@@ -24,34 +26,29 @@ public class BookStock {
 				required = books.get(i);
 			}
 		}
-		if (required != null) {
-			reqBook = new Book((String) required.get("title"), (Long) required.get("ISBN"),
-					(String) required.get("description"), (ArrayList<Integer>) required.get("reviews"),
-					(boolean) required.get("available"));
-		}
-		System.out.println(reqBook);
-		return reqBook;
+		return required;
 	}
 
-	public static void setAvailability(Book book, boolean availability) throws Exception {
+	public static void setAvailability(JSONObject requiredBook, boolean availability) throws Exception {
 		List<JSONObject> books = getBooksFromStock();
 		JSONObject required = null;
 		for (int i = 0; i < books.size(); i++) {
-			if (books.get(i).get("ISBN") == book.getISBN()) {
-				required = books.get(i);
+			if (Long.compare((long) books.get(i).get("ISBN"), (long) requiredBook.get("ISBN")) == 0) {
+				books.get(i).put("available", availability);
 			}
 		}
-		required.remove("available");
-		required.put("available", availability);
+	    FileWriter file = new FileWriter("BooksStock.json");
+	    file.write(books.toString());
+	    file.close();
 	}
 
-	public static void main(String args[]) {
-		try {
-			getBook(1122334455661L);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String args[]) {
+//		try {
+//			getBook(1122334455661L);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 
 }
