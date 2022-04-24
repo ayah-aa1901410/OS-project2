@@ -1,0 +1,5 @@
+attempt 1: Right
+attempt 2: Right
+/home/somaya/Documents/FileSystem/CMPS151_SalehAlhazbi/CMPS151_Team1_Muraam_Somaya/CMPS151_Project/project1.sh: line 7: num1 num2: syntax error in expression (error token is "num2") attempt 3: Wrong
+Final Score: 0
+Total No. of attempts: 3

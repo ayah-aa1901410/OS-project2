@@ -1,0 +1,2 @@
+/home/ra/Documents/MultiThreadedClient-ServerSystem/src/FileSystem/CMPS151_SalehAlhazbi(sa3456)/CMPS151_Team1_ma1800416_se1701977/CMPS151_Project/Team1_ma1800416_se1701977_v6.sh: line 7: num1  num2: syntax error in expression (error token is "num2")
+attempt 6: Wrong

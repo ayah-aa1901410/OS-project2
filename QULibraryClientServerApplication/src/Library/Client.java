@@ -13,17 +13,19 @@ public class Client {
 		Scanner fromServer = null;
 		PrintWriter toServer = null;
 		try {
-			boolean success = false;
 			Socket client = new Socket("localhost", 1500);
 			fromUser = new Scanner(System.in);
 			fromServer = new Scanner(new InputStreamReader(client.getInputStream()));
 			toServer = new PrintWriter(client.getOutputStream(), true);
 			int loginCount =0;
+			boolean cont = false;
+			String message= null;
+			
 			while(loginCount < 5) {
 				System.out.println("Username: ");
 				String username = fromUser.nextLine();
 				toServer.println(username);
-				String message = fromServer.nextLine();
+				message = fromServer.nextLine();
 				System.out.println(message);
 				if(message.equals("Enter Password: ")) {
 					String password = fromUser.nextLine();
@@ -31,7 +33,7 @@ public class Client {
 					message = fromServer.nextLine();
 					System.out.println(message);
 					if(message.equals("Valid Login")) {
-						success=true;
+						cont = true;
 						break;
 					}else {
 						loginCount++;
@@ -40,45 +42,45 @@ public class Client {
 					loginCount++;
 				}
 			}
-			
-			while(success) {
-				for(int i = 0; i<6; i++) {
-					String menuItem = fromServer.nextLine();
-					System.out.println(menuItem);
+
+				while(cont == true) {
+					for(int i = 0; i<6; i++) {
+						String menuItem = fromServer.nextLine();
+						System.out.println(menuItem);
+					}
+					
+					int response = fromUser.nextInt();
+					toServer.println(response);
+					
+					switch(response) {
+					case 1:
+						String response1 = fromServer.nextLine();
+						System.out.println(response1);
+						break;
+					case 2:
+						String response2 = fromServer.nextLine();
+						System.out.println(response2);
+						break;
+					case 3:
+						String response3 = fromServer.nextLine();
+						System.out.println(response3);
+						break;
+					case 4:
+						String response4 = fromServer.nextLine();
+						System.out.println(response4);
+						break;
+					case 5:
+						String response5 = fromServer.nextLine();
+						System.out.println(response5);
+						cont = false;
+						break;
+					default:
+						String response6 = fromServer.nextLine();
+						System.out.println(response6);
+						break;
+					}
 				}
-				
-				int response = fromUser.nextInt();
-				toServer.println(response);
-				
-				switch(response) {
-				case 1:
-					String response1 = fromServer.nextLine();
-					System.out.println(response1);
-					break;
-				case 2:
-					String response2 = fromServer.nextLine();
-					System.out.println(response2);
-					break;
-				case 3:
-					String response3 = fromServer.nextLine();
-					System.out.println(response3);
-					break;
-				case 4:
-					String response4 = fromServer.nextLine();
-					System.out.println(response4);
-					break;
-				case 5:
-					String response5 = fromServer.nextLine();
-					System.out.println(response5);
-					success = false;
-					break;
-				default:
-					String response6 = fromServer.nextLine();
-					System.out.println(response6);
-					break;
-				}
-				
-			}
+
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

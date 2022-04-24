@@ -33,13 +33,14 @@ public class Services extends Thread {
 
 	public void run() {
 		boolean isUser = false;
-		boolean cont = false;
 		try {
 			fromClient = new Scanner(client.getInputStream());
 			toClient = new PrintWriter(client.getOutputStream(), true);
 			String message = "";
+			boolean cont = false;
 			int loginCount = 0;
-			while(loginCount<5) {
+			
+			while(loginCount<5 && !(message.equals("Valid Login"))) {
 				username = fromClient.nextLine();
 				for(int i = 0; i<users.length; i++) {
 					if(username.equalsIgnoreCase(users[i].getUsername())) {
@@ -67,39 +68,39 @@ public class Services extends Thread {
 					loginCount++;
 				}
 			}
-			
-			while(cont) {
-				toClient.println("Choose One of the following Services: ");
-				toClient.println("1: Borrow a Book");
-				toClient.println("2: Rate a Book");
-				toClient.println("3: Upload a Book");
-				toClient.println("4: Download a Book");
-				toClient.println("5: Exit");
-				int response = fromClient.nextInt();
-				
-				switch(response) {
-				case 1:
-					toClient.println("you are borrowing a book");
-					break;
-				case 2:
-					toClient.println("you are rating a book");
-					break;
-				case 3:
-					toClient.println("you are uploading a book");
-					break;
-				case 4:
-					toClient.println("you are downloading book");
-					break;
-				case 5:
-					toClient.println("Thank you for visiting!");
-					cont = false;
-					break;
-				default:
-					toClient.println("Invalid");
-					break;
+
+				while(cont == true) {
+					toClient.println("Choose One of the following Services: ");
+					toClient.println("1: Borrow a Book");
+					toClient.println("2: Rate a Book");
+					toClient.println("3: Upload a Book");
+					toClient.println("4: Download a Book");
+					toClient.println("5: Exit");
+					int response = fromClient.nextInt();
+					
+					switch(response) {
+					case 1:
+						toClient.println("you are borrowing a book");
+						break;
+					case 2:
+						toClient.println("you are rating a book");
+						break;
+					case 3:
+						toClient.println("you are uploading a book");
+						break;
+					case 4:
+						toClient.println("you are downloading book");
+						break;
+					case 5:
+						toClient.println("Thank you for visiting!");
+						cont = false;
+						break;
+					default:
+						toClient.println("Invalid");
+						break;
+					}					
 				}
-				
-			}
+
 				
 		}catch (IOException e) {
 			e.printStackTrace();
