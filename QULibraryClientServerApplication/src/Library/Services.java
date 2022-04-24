@@ -24,6 +24,7 @@ public class Services extends Thread {
 	private String username=null;
 	
 	FileSystem fileSystem = new FileSystem();
+	BookStock bookStock = new BookStock();
 	
 	private User users[] = {new User("Ayah Abdel-Ghani", "ayah", "password1"), new User("Fatimaelzahraa Ahmed", "fatima", "password2"), new User("Asma Qayummudin", "asma", "password3"), new User("Heba Dawoud", "heba", "password4")};
 	private User currentUser;
@@ -85,9 +86,38 @@ public class Services extends Thread {
 					
 					switch(response) {
 					case 1:
+						Book requiredBook = null;
+						boolean bookAvailable = false; 
+						String checkingBookMessage = "";
+						
 						toClient.println("Please enter the ISBN of the Book: ");
 						Long isbn = fromClient.nextLong();
-//						for(int i = 0, i<)
+						
+						try {
+							requiredBook = bookStock.getBook(isbn);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						toClient.println(requiredBook);
+						if(requiredBook != null) {
+							if(requiredBook.isAvailable() == true) {
+								message = "Book is Available. You have now Borrowed the Book";
+								try {
+									bookStock.setAvailability(requiredBook, false);
+								} catch (Exception e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							}else {
+								message = "Book is not Available. You cannot borrow this book.";
+							}
+						}else {
+							message = "Book Not in Stock";
+						}
+						
+						toClient.println(message);
+						
 						break;
 					case 2:
 						toClient.println("you are rating a book");

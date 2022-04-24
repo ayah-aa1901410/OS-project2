@@ -1,7 +1,7 @@
 [
 	{
 		"ISBN": 1122334455661,
-		"rates": [
+		"reviews": [
 		],
 		"available": true,
 		"description": "This is the first book in the dataset",
@@ -9,7 +9,7 @@
 	},
 	{
 		"ISBN": 2334235645674,
-		"rates": [
+		"reviews": [
 		],
 		"available": true,
 		"description": "This is the second book in the dataset",
@@ -17,7 +17,7 @@
 	},
 	{
 		"ISBN": 2314327897654,
-		"rates": [
+		"reviews": [
 		],
 		"available": true,
 		"description": "This is the third book in the dataset",
@@ -25,7 +25,7 @@
 	},
 	{
 		"ISBN": 5446537897032,
-		"rates": [
+		"reviews": [
 		],
 		"available": true,
 		"description": "This is the fourth book in the dataset",
@@ -33,7 +33,7 @@
 	},
 	{
 		"ISBN": 1278655438764,
-		"rates": [
+		"reviews": [
 		],
 		"available": true,
 		"description": "This is the fifth book in the dataset",
@@ -41,7 +41,7 @@
 	},
 	{
 		"ISBN": 9044837627483,
-		"rates": [
+		"reviews": [
 		],
 		"available": true,
 		"description": "This is the sixth book in the dataset",
@@ -49,7 +49,7 @@
 	},
 	{
 		"ISBN": 9488372638493,
-		"rates": [
+		"reviews": [
 		],
 		"available": true,
 		"description": "This is the seventh book in the dataset",
@@ -57,7 +57,7 @@
 	},
 	{
 		"ISBN": 1291028372849,
-		"rates": [
+		"reviews": [
 		],
 		"available": true,
 		"description": "This is the eigth book in the dataset",
@@ -65,7 +65,7 @@
 	},
 	{
 		"ISBN": 8493023948928,
-		"rates": [
+		"reviews": [
 		],
 		"available": true,
 		"description": "This is the ninth book in the dataset",
@@ -73,7 +73,7 @@
 	},
 	{
 		"ISBN": 3829304929304,
-		"rates": [
+		"reviews": [
 		],
 		"available": true,
 		"description": "This is the tenth book in the dataset",

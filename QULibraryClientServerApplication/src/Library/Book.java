@@ -18,6 +18,15 @@ public class Book {
 		this.reviews = reviews;
 	}
 
+	public Book(String title, Long isbn, String description, ArrayList<Integer> reviews, boolean available) {
+		super();
+		this.title = title;
+		this.ISBN = isbn;
+		this.description = description;
+		this.reviews = reviews;
+		this.available = available;
+	}
+
 	public String getTitle() {
 		return title;
 	}

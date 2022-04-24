@@ -58,6 +58,10 @@ public class Client {
 						System.out.println(askForISBN);
 						Long isbn = fromUser.nextLong();
 						toServer.println(isbn);
+						String book = fromServer.nextLine();
+						System.out.println(book);
+						String borrowBookReply = fromServer.nextLine();
+						System.out.println(borrowBookReply);
 						break;
 					case 2:
 						String response2 = fromServer.nextLine();
