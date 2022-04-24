@@ -122,7 +122,7 @@ public class Services extends Thread {
 						
 						break;
 					case 2:
-						toClient.println("you are rating a book");
+						toClient.println("you are review a book");
 						break;
 					case 3:
 						toClient.println("you are uploading a book");
