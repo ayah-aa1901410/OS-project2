@@ -10,16 +10,18 @@ import org.json.simple.parser.*;
 
 public class FileSystem {
 	
+	
 	public static void downloadBook(String filename, Book book) throws Exception {
 	    JSONObject sampleObject = new JSONObject();
 	    
 	    sampleObject.put("title",book.getTitle());
 	    sampleObject.put("ISBN", book.getISBN());
 	    sampleObject.put("description", book.getDescription());
+	    sampleObject.put("available", book.isAvailable());
 
 	    JSONArray bookRates = new JSONArray();
-	    for(int i = 0; i< book.getRates().size(); i++) {
-	    	bookRates.add(book.getRates().get(i));
+	    for(int i = 0; i< book.getReviews().size(); i++) {
+	    	bookRates.add(book.getReviews().get(i));
 	    }
 	    
 	    sampleObject.put("rates", bookRates);

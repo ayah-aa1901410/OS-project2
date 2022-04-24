@@ -22,9 +22,12 @@ public class Services extends Thread {
 	String currentUserHomeDir = System.getProperty("user.home");
 	private String username=null;
 	
+	FileSystem fileSystem = new FileSystem();
+	
 	private User users[] = {new User("Ayah Abdel-Ghani", "ayah", "password1"), new User("Fatimaelzahraa Ahmed", "fatima", "password2"), new User("Asma Qayummudin", "asma", "password3"), new User("Heba Dawoud", "heba", "password4")};
 	private User currentUser;
-
+//	private Book book1 = 
+	private Book books[] = {};
 	public Services(Socket client) {
 		super();
 		this.client = client;
@@ -40,7 +43,7 @@ public class Services extends Thread {
 			boolean cont = false;
 			int loginCount = 0;
 			
-			while(loginCount<5 && !(message.equals("Valid Login"))) {
+			while(loginCount<5) {
 				username = fromClient.nextLine();
 				for(int i = 0; i<users.length; i++) {
 					if(username.equalsIgnoreCase(users[i].getUsername())) {
@@ -61,7 +64,9 @@ public class Services extends Thread {
 						}
 					}
 				}
-				
+				if(cont == true) {
+					break;
+				}
 				if(!isUser) {
 					message = "Not a valid user.";
 					toClient.println(message);

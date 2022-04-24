@@ -5,16 +5,17 @@ import java.util.List;
 
 public class Book {
 	String title;
-	int ISBN;
+	Long ISBN;
 	String description;
-	List rates = new ArrayList<Integer>();
+	List reviews = new ArrayList<Integer>();
+	boolean available = true;
 	
-	public Book(String title, int i, String description, List rates2) {
+	public Book(String title, Long isbn, String description, List reviews) {
 		super();
 		this.title = title;
-		this.ISBN = i;
+		this.ISBN = isbn;
 		this.description = description;
-		this.rates = rates2;
+		this.reviews = reviews;
 	}
 
 	public String getTitle() {
@@ -25,12 +26,12 @@ public class Book {
 		this.title = title;
 	}
 
-	public int getISBN() {
+	public Long getISBN() {
 		return ISBN;
 	}
 
-	public void setISBN(int iSBN) {
-		ISBN = iSBN;
+	public void setISBN(Long iSBN) {
+		this.ISBN = iSBN;
 	}
 
 	public String getDescription() {
@@ -41,12 +42,25 @@ public class Book {
 		this.description = description;
 	}
 
-	public List getRates() {
-		return rates;
+	public List getReviews() {
+		return reviews;
 	}
 
-	public void setRates(List rates) {
-		this.rates = rates;
+	public void setReviews(List reviews) {
+		this.reviews = reviews;
 	}
+	
+	public void addReview(int review) {
+		this.reviews.add(review);
+	}
+	
+	public boolean isAvailable() {
+		return available;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
+
 	
 }
