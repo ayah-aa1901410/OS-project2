@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Client {
 	public static void main(String args[]) {
@@ -32,19 +33,11 @@ public class Client {
 
 			if(success) {
 				while(success) {
-					String message1 = fromServer.nextLine();
-					System.out.println(message1);
-					String service1 = fromServer.nextLine();
-					System.out.println(service1);
-					String service2 = fromServer.nextLine();
-					System.out.println(service2);
-					String service3 = fromServer.nextLine();
-					System.out.println(service3);
-					String service4 = fromServer.nextLine();
-					System.out.println(service4);
-					String service5 = fromServer.nextLine();
-					System.out.println(service5);
-
+					for(int i = 0; i<6; i++) {
+						String menuItem = fromServer.nextLine();
+						System.out.println(menuItem);
+					}
+					
 					int response = fromUser.nextInt();
 					toServer.println(response);
 					
@@ -69,6 +62,10 @@ public class Client {
 						String response5 = fromServer.nextLine();
 						System.out.println(response5);
 						success = false;
+						break;
+					default:
+						String response6 = fromServer.nextLine();
+						System.out.println(response6);
 						break;
 					}
 					

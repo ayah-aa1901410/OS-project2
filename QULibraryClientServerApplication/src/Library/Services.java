@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Services extends Thread {
 	private Socket client;
@@ -47,7 +48,7 @@ public class Services extends Thread {
 					toClient.println(message);
 					String password = fromClient.nextLine();
 					if(password.equals(currentUser.getPassword())) {
-						message = "Valid Login\r\n";
+						message = "Valid Login";
 						toClient.println(message);
 						cont = true;
 						break;
@@ -71,7 +72,6 @@ public class Services extends Thread {
 					toClient.println("3: Upload a Book");
 					toClient.println("4: Download a Book");
 					toClient.println("5: Exit");
-					
 					int response = fromClient.nextInt();
 					
 					switch(response) {
@@ -91,6 +91,9 @@ public class Services extends Thread {
 						toClient.println("Thank you for visiting!");
 						cont = false;
 						break;
+					default:
+						toClient.println("Invalid");
+						break;
 					}
 					
 				}
@@ -98,6 +101,21 @@ public class Services extends Thread {
 				
 		}catch (IOException e) {
 			e.printStackTrace();
+		}finally {
+			if(toClient != null) {
+				toClient.close();
+			}
+			if(fromClient != null) {
+				fromClient.close();
+			}
+			if(client != null) {
+				try {
+					client.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	
