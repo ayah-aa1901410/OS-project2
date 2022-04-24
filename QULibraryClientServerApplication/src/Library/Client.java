@@ -54,8 +54,10 @@ public class Client {
 					
 					switch(response) {
 					case 1:
-						String response1 = fromServer.nextLine();
-						System.out.println(response1);
+						String askForISBN = fromServer.nextLine();
+						System.out.println(askForISBN);
+						Long isbn = fromUser.nextLong();
+						toServer.println(isbn);
 						break;
 					case 2:
 						String response2 = fromServer.nextLine();

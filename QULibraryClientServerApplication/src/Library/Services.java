@@ -7,6 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -18,7 +20,6 @@ public class Services extends Thread {
 	private ObjectOutputStream fileTransfer = null;
 	private FileOutputStream fileOutputStream = null;
 	private File file = null;
-//	private FileEvent fileEvent;
 	String currentUserHomeDir = System.getProperty("user.home");
 	private String username=null;
 	
@@ -26,8 +27,7 @@ public class Services extends Thread {
 	
 	private User users[] = {new User("Ayah Abdel-Ghani", "ayah", "password1"), new User("Fatimaelzahraa Ahmed", "fatima", "password2"), new User("Asma Qayummudin", "asma", "password3"), new User("Heba Dawoud", "heba", "password4")};
 	private User currentUser;
-//	private Book book1 = 
-	private Book books[] = {};
+	
 	public Services(Socket client) {
 		super();
 		this.client = client;
@@ -85,7 +85,9 @@ public class Services extends Thread {
 					
 					switch(response) {
 					case 1:
-						toClient.println("you are borrowing a book");
+						toClient.println("Please enter the ISBN of the Book: ");
+						Long isbn = fromClient.nextLong();
+//						for(int i = 0, i<)
 						break;
 					case 2:
 						toClient.println("you are rating a book");

@@ -10,7 +10,7 @@ public class Book {
 	List reviews = new ArrayList<Integer>();
 	boolean available = true;
 	
-	public Book(String title, Long isbn, String description, List reviews) {
+	public Book(String title, Long isbn, String description, ArrayList<Integer> reviews) {
 		super();
 		this.title = title;
 		this.ISBN = isbn;
